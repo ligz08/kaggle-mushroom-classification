@@ -12,5 +12,5 @@ if __name__=='__main__':
         .appName('Mushroom') \
         .getOrCreate()
 
-    mushrooms = spark.read.csv('../input/mushrooms.csv')
-    print(mushrooms.dtypes)
+    mushrooms = spark.read.csv('kaggle-mushroom/input/mushrooms.csv')
+    print mushrooms.dtypes
