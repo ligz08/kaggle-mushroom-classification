@@ -13,4 +13,7 @@ if __name__=='__main__':
         .getOrCreate()
 
     mushrooms = spark.read.csv('kaggle-mushroom/input/mushrooms.csv')
-    print mushrooms.dtypes
+
+    mushrooms_train, mushrooms_val = mushrooms.randomSplit([0.7, 0.3])
+
+    print mushrooms_val.show()
