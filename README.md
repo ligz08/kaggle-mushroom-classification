@@ -158,6 +158,46 @@ accuracy = correct.agg({'correct':'mean'}).collect()[0][0]
 
 print('Test accuracy:', accuracy)
 ```
+
+Some intermediate results:
+```text
+>>> results.show(5)
++--------------------+----------+---------+
+|         probability|prediction|poisonous|
++--------------------+----------+---------+
+|[0.97024593961675...|       0.0|      0.0|
+|[0.96303265951929...|       0.0|      0.0|
+|[0.95909221894651...|       0.0|      0.0|
+|[0.95958294573868...|       0.0|      0.0|
+|[0.95580449199223...|       0.0|      0.0|
++--------------------+----------+---------+
+only showing top 5 rows
+```
+
+```text
+>>> correct.show(10)
++-------+
+|correct|
++-------+
+|      1|
+|      1|
+|      1|
+|      1|
+|      1|
+|      1|
+|      1|
+|      1|
+|      1|
+|      1|
++-------+
+only showing top 10 rows
+```
+
+```text
+>>> accuracy
+0.9924812030075187
+```
+
 We finally get an accuracy of 0.9925 on the test set.
 
 ## Complete Python script
