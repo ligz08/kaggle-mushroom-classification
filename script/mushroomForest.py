@@ -1,4 +1,5 @@
 from pyspark.mllib.tree import RandomForest, RandomForestModel
+from pyspark import SparkContext
 from pyspark.sql import SparkSession, Row
 from pyspark.ml.feature import VectorAssembler, StringIndexer, OneHotEncoder
 from pyspark.ml import Pipeline
@@ -11,6 +12,8 @@ import numpy as np
 
 
 if __name__=='__main__':
+
+    sc = SparkContext()
 
     spark = SparkSession.builder \
         .appName('Mushroom') \
