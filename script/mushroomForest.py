@@ -84,7 +84,7 @@ if __name__=='__main__':
     #
     # After .collect(), `results` become a list of Row objects
 
-    results_prob_pred = [(float(row[0][0]), float(row[1])) for row in results]
+    results_prob_pred = [(float(row[0][0]), 1.0-float(row[1])) for row in results]
     prob_pred = sc.parallelize(results_prob_pred)
     score = BinaryClassificationMetrics(prob_pred)
     print('AUC ROC score:', score.areaUnderROC)
