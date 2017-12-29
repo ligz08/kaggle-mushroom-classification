@@ -161,7 +161,10 @@ print('Test accuracy:', accuracy)
 We finally get an accuracy of 0.9925 on the test set.
 
 ## Complete Python script
-Please see [script/mushroomForest.py](script/mushroomForest.py)
+Please see [script/mushroomForest.py](script/mushroomForest.py). Run it with `spark-submit`
+```bash
+spark-submit mushroomForest.py
+```
 
 ## References
 - Lucas Allen (2017), [*A New Introduction to Spark 2.1 Dataframes with Python and MLlib*](http://www.techpoweredmath.com/introduction-spark-2-1-dataframes-python-mllib/#.WkWRxlQ-fOR)
