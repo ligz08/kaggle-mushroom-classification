@@ -67,11 +67,9 @@ if __name__=='__main__':
 
     pred = model.transform(mushrooms_val)
 
-
-
-    results = pred.select(['probability', 'prediction', 'poisonous']).collect()
+    results = pred.select(['probability', 'prediction', 'poisonous'])
     # Select the columns relevant for evaluation
-    # `results` looks like this before .collect():
+    # `results` looks like this:
     # +--------------------+----------+---------+
     # |         probability|prediction|poisonous|
     # +--------------------+----------+---------+
@@ -81,10 +79,12 @@ if __name__=='__main__':
     # |[0.95958294573868...|       0.0|      0.0|
     # |[0.95580449199223...|       0.0|      0.0|
     # +--------------------+----------+---------+
-    #
-    # After .collect(), `results` become a list of Row objects
 
-    results_prob_pred = [(float(row[0][0]), 1.0-float(row[1])) for row in results]
-    prob_pred = sc.parallelize(results_prob_pred)
-    score = BinaryClassificationMetrics(prob_pred)
-    print('AUC ROC score:', score.areaUnderROC)
+    results_collect = results.collect()
+    # After .collect(), `results_collect` become a list of Row objects
+
+    correct = results.withColumn('correct', (results.prediction==results.poisonous).cast('integer')).select('correct')
+
+    accuracy = correct.agg({'correct':'mean'}).collect()[0][0]
+
+    print('Test accuracy:', accuracy)
