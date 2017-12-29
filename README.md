@@ -163,7 +163,7 @@ We finally get an accuracy of 0.9925 on the test set.
 ## Complete Python script
 Please see [script/mushroomForest.py](script/mushroomForest.py). Run it with `spark-submit`
 ```bash
-spark-submit mushroomForest.py
+$ spark-submit mushroomForest.py
 ```
 
 ## References
