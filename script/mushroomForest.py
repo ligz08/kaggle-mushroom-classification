@@ -1,12 +1,8 @@
-from pyspark.mllib.tree import RandomForest, RandomForestModel
 from pyspark import SparkContext
 from pyspark.sql import SparkSession, Row
 from pyspark.ml.feature import VectorAssembler, StringIndexer, OneHotEncoder
 from pyspark.ml import Pipeline
 from pyspark.ml.classification import RandomForestClassifier
-from pyspark.mllib.evaluation import BinaryClassificationMetrics
-import pandas as pd
-import numpy as np
 
 
 
